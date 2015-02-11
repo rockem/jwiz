@@ -30,6 +30,6 @@ public class Wizard {
     }
 
     public void dispatchCancel() {
-
+        action.cancel();
     }
 }
