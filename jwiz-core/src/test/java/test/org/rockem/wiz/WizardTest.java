@@ -16,28 +16,46 @@
  */
 package test.org.rockem.wiz;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.rockem.wiz.Wizard;
 import org.rockem.wiz.WizardAction;
 
+import javax.swing.*;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 public class WizardTest {
 
+    private WizardAction action;
+    private Wizard wizard;
+    private List<Object> pages = Arrays.asList(new Object(), new Object(), new Object());
+
+    @Before
+    public void setUp() throws Exception {
+        action = mock(WizardAction.class);
+        wizard = new Wizard(action, pages);
+    }
+
     @Test
     public void shouldExecuteActionOnFinish() throws Exception {
-        WizardAction action = mock(WizardAction.class);
-        Wizard w = new Wizard(action);
-        w.dispatchFinish();
+        wizard.dispatchFinish();
         verify(action).execute();
     }
 
     @Test
     public void shouldCancelActionOnCancel() throws Exception {
-        WizardAction action = mock(WizardAction.class);
-        Wizard w = new Wizard(action);
-        w.dispatchCancel();
+        wizard.dispatchCancel();
         verify(action).cancel();
+    }
+
+    @Test
+    public void shouldRetrieveFirstPage() throws Exception {
+        assertTrue("Current page is not the first page",
+                wizard.getCurrentPage() == pages.get(0));
     }
 }

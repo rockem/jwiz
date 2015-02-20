@@ -17,12 +17,16 @@
 
 package org.rockem.wiz;
 
+import java.util.List;
+
 public class Wizard {
 
     private final WizardAction action;
+    private final List<Object> pages;
 
-    public Wizard(WizardAction action) {
+    public Wizard(WizardAction action, List<Object> pages) {
         this.action = action;
+        this.pages = pages;
     }
 
     public void dispatchFinish() {
@@ -31,5 +35,9 @@ public class Wizard {
 
     public void dispatchCancel() {
         action.cancel();
+    }
+
+    public Object getCurrentPage() {
+        return pages.get(0);
     }
 }

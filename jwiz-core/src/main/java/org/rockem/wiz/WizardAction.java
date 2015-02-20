@@ -18,6 +18,7 @@
 package org.rockem.wiz;
 
 public interface WizardAction {
+
     void execute();
 
     void cancel();
