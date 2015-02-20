@@ -11,6 +11,12 @@ dependencies {
     compile project(':jwiz-core')
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.2'
+task runSwing(type: JavaExec, dependsOn:'classes') {
+    classpath sourceSets.main.runtimeClasspath
+    main = 'org.rockem.jwiz.example.swing.SwingWizard'
 }
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
