@@ -40,4 +40,11 @@ public class Wizard {
     public Object getCurrentPage() {
         return pages.get(0);
     }
+
+    public void addWizardChangedListener(WizardChangedListener listener) {
+    }
+
+    public void dispatchNext() {
+
+    }
 }

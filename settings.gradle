@@ -1,1 +1,1 @@
-include 'jwiz-core', 'swing-example'
+include 'jwiz-core', 'jwiz-swing'
