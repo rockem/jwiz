@@ -58,4 +58,11 @@ public class WizardTest {
         assertTrue("Current page is not the first page",
                 wizard.getCurrentPage() == pages.get(0));
     }
+
+    @Test
+    public void nextGoToNextPage() throws Exception {
+        wizard.dispatchNext();
+        assertTrue("Current page is not the second page",
+                wizard.getCurrentPage() == pages.get(1));
+    }
 }
